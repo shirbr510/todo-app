@@ -16,7 +16,7 @@ class TodoCreator extends Component {
 
     onRemoveClick(){
         console.log(this.state.isChecked);
-        this.props.onRemoveClick(this.state.isChecked);
+        this.props.onRemoveClick(this.props.id);
     }
 
     render() {
@@ -37,6 +37,7 @@ TodoCreator.defaultProps={
 };
 
 TodoCreator.propTypes={
+    id:React.PropTypes.any.isRequired,
     isChecked:React.PropTypes.bool,
     timestamp:React.PropTypes.string.isRequired,
     text:React.PropTypes.string.isRequired,
