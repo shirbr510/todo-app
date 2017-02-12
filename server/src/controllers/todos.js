@@ -22,7 +22,22 @@ router.get('/:id',async function (req, res) {
 
 router.post('',function (req, res) {
     var todo = req.body;
-    res.json({ message: 'Saved '+todo.id});
+
+    var provider=new TodosProvider();
+
+    provider.add(todo);
+
+    res.json({message:"success"});
+});
+
+router.put('',function (req, res) {
+    var todo = req.body;
+
+    var provider=new TodosProvider();
+
+    provider.update(todo);
+
+    res.json({message:"success"});
 });
 
 router.delete('/:id',function (req, res) {
