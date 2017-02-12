@@ -19,12 +19,13 @@ class TodoCreator extends Component {
     }
 
     render() {
+        debugger;
         return (
             <div>
                 <button onClick={this.onRemoveClick}>Remove</button>
                 <span>{this.props.text}</span>
                 <input type="checkbox" checked={this.state.isChecked} onChange={this.onToggle}/>
-                <span>Created At: {this.props.timestamp}</span>
+                <span>Created At: { this.props.timestamp.toString()}</span>
             </div>
         );
     }
@@ -38,7 +39,7 @@ TodoCreator.defaultProps={
 TodoCreator.propTypes={
     id:React.PropTypes.any.isRequired,
     isChecked:React.PropTypes.bool,
-    timestamp:React.PropTypes.string.isRequired,
+    timestamp: React.PropTypes.instanceOf(Date).isRequired,
     text:React.PropTypes.string.isRequired,
     onRemoveClick:React.PropTypes.func
 };

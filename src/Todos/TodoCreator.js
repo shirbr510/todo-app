@@ -15,6 +15,7 @@ import React,{Component} from 'react';
 
      onAddClick(){
          this.props.onAddClick(this.state.value);
+         this.setState={value:''};
      }
 
     render() {
