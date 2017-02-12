@@ -5,6 +5,7 @@ import React,{Component} from 'react';
      constructor(props){
          super(props);
          this.onInput=this.onInput.bind(this);
+         this.onClick=this.onClick.bind(this);
          this.state={value:props.defaultText};
      }
 
@@ -12,10 +13,15 @@ import React,{Component} from 'react';
          this.setState({value:event.target.value});
      }
 
+     onClick(){
+         console.log(this.state.value);
+         this.props.onClick(this.state.value);
+     }
+
     render() {
         return (
             <div>
-                <button>Add</button>
+                <button onClick={this.onClick}>Add</button>
                 <input type="text" value={this.state.value} onChange={this.onInput}/>
             </div>
         );
@@ -23,11 +29,13 @@ import React,{Component} from 'react';
 }
 
 TodoCreator.defaultProps={
-    defaultText:''
+    defaultText:'',
+    onClick:()=>{}
 };
 
 TodoCreator.propTypes={
-    defaultText:React.PropTypes.string
+    defaultText:React.PropTypes.string,
+    onClick:React.PropTypes.func
 };
 
 export default TodoCreator
