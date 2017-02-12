@@ -19,8 +19,9 @@ class TodoProvider {
 	}
 
 	add(todo) {
-		var todo = new this.todoModel(todo);
-		todo.save();
+		var newTodo = new this.todoModel(todo);
+		newTodo=this.add_id(newTodo);
+		newTodo.save();
 	}
 
 	async update (todo) {
@@ -30,6 +31,12 @@ class TodoProvider {
 	async delete (todoId) {
 		await this.todoModel.remove({ todoId: todoId }).exec();
 	}
+
+	add_id(obj){
+		obj._id = new mongoose.Types.ObjectId();
+		return obj;
+	}
+
 
 }
 
