@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
+import TodosProvider from '../db/TodosProvider'
 
-router.get('/',function (req, res) {
-    res.json({ message: 'Got All'});
+router.get('/',async function (req, res) {
+    var provider=new TodosProvider();
+
+    var todos = await provider.getAll();
+
+    res.json({ todos});
 });
 
 router.get('/:id',function (req, res) {
