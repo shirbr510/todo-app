@@ -10,9 +10,14 @@ router.get('/',async function (req, res) {
     res.json({ todos});
 });
 
-router.get('/:id',function (req, res) {
+router.get('/:id',async function (req, res) {
     var id=req.params.id;
-    res.json({ message: 'Got '+id});
+
+    var provider=new TodosProvider();
+
+    var todo = await provider.get(id);
+
+    res.json({todo});
 });
 
 router.post('',function (req, res) {
