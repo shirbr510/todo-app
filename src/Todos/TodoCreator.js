@@ -14,7 +14,6 @@ import React,{Component} from 'react';
      }
 
      onAddClick(){
-         console.log(this.state.value);
          this.props.onAddClick(this.state.value);
      }
 

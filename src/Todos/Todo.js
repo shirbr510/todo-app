@@ -15,7 +15,6 @@ class TodoCreator extends Component {
     }
 
     onRemoveClick(){
-        console.log(this.state.isChecked);
         this.props.onRemoveClick(this.props.id);
     }
 

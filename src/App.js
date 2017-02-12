@@ -18,11 +18,24 @@ todos=_.map(todos,(todo,i)=>{
 });
 
 export default class App extends Component {
+
+    constructor(props){
+        super(props);
+        this.onTodosChange=this.onTodosChange.bind(this);
+        this.state={
+            todos:todos
+        };
+    }
+
+    onTodosChange(todos){
+        this.setState({todos:todos})
+    }
+
     render() {
         return (
             <div>
                 <TodoCreator/>
-                <TodoList todos={todos}/>
+                <TodoList todos={this.state.todos} onTodosChanged={this.onTodosChange}/>
             </div>
         );
     }
